@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleConfirmPassword.textContent = type === 'password' ? '👁️' : '🙈';
     });
 
-    // 3. Form Submission Validation
+    // 3. Form Submission & Validation Handling
     form.addEventListener('submit', (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Form reload hone se rokein
         
         let isValid = true;
 
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearError('emailError');
         }
 
-        // Password Validation (Min 8 chars, Alphanumeric)
+        // Password Validation (Min 8 chars, Alphanumeric: letters + numbers)
         const passwordValue = passwordInput.value.trim();
         const hasLetter = /[a-zA-Z]/.test(passwordValue);
         const hasNumber = /[0-9]/.test(passwordValue);
@@ -65,13 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
             showError('passwordError', 'Password must be at least 8 characters long');
             isValid = false;
         } else if (!hasLetter || !hasNumber) {
-            showError('passwordError', 'Password must be alphanumeric (letters & numbers)');
+            showError('passwordError', 'Password must contain both letters and numbers');
             isValid = false;
         } else {
             clearError('passwordError');
         }
 
-        // Confirm Password Match
+        // Confirm Password Match Validation
         if (confirmPasswordInput.value.trim() === '') {
             showError('confirmPasswordError', 'Please confirm your password');
             isValid = false;
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearError('confirmPasswordError');
         }
 
-        // Date Validation (DD/MM/YYYY)
+        // Date of Birth Validation (DD/MM/YYYY)
         const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
         if (dateInput.value.trim() === '') {
             showError('dateError', 'Date of birth is required');
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearError('dateError');
         }
 
-        // Radio Button Selection
+        // Profession Radio Selection Validation
         const professionSelected = document.querySelector('input[name="profession"]:checked');
         if (!professionSelected) {
             showError('professionError', 'Please select Student or Employee');
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearError('professionError');
         }
 
-        // Checkbox Terms Validation
+        // Terms and Conditions Checkbox Validation
         if (!termsCheckbox.checked) {
             showError('termsError', 'You must agree to all conditions');
             isValid = false;
@@ -111,12 +111,13 @@ document.addEventListener('DOMContentLoaded', () => {
             clearError('termsError');
         }
 
-        // If All Validations Pass -> Show Success Popup Modal
+        // If All Validations Pass -> Trigger Success Popup Modal
         if (isValid) {
             successModal.classList.add('active');
         }
     });
 
+    // Helper Functions for Error Feedback Display
     function showError(elementId, message) {
         document.getElementById(elementId).innerText = message;
     }
@@ -125,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById(elementId).innerText = '';
     }
 
-    // Modal Close Action
+    // Modal Close Button Action (Resets form and hides popup)
     closeModalBtn.addEventListener('click', () => {
         successModal.classList.remove('active');
         form.reset();
