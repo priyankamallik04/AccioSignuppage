@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,22 +7,16 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Marko+One&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&family=Marko+One&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&family=Madimi+One&family=Marko+One&display=swap" rel="stylesheet">
 </head>
 <body>
+     <!-- Header (Sticky & Responsive) -->
      <header>
       <h1 class="logo">Business<span>Magnify</span></h1>
-      <nav class="navi-right">
+      <nav class="navi-right" aria-label="Main Navigation">
         <ul class="menu">
           <li class="item"><a href="#">Home</a></li>
           <li class="item"><a href="#">About</a></li>
@@ -32,71 +26,80 @@
       </nav>
      </header>
 
+     <!-- Main Signup Form Container -->
      <main>
       <form id="signupForm" method="POST" novalidate>
         <fieldset class="fline">
-                <h1>Signup</h1>
-                <br/>
-          <input type="text" name="name" id="name" placeholder="Full Name" class="underlined-text" />
-                <small class="error-msg" id="nameError"></small>
-          <br/><br/>
+                <legend class="form-title">Signup</legend>
+                
+                <div class="input-container">
+                    <label for="name" class="visually-hidden">Full Name</label>
+              <input type="text" name="name" id="name" placeholder="Full Name" class="underlined-text" required aria-required="true" />
+                    <small class="error-msg" id="nameError" aria-live="polite"></small>
+                </div>
 
-          <input type="email" name="email" id="email" placeholder="Email" class="underlined-text" />
-                <small class="error-msg" id="emailError"></small>
-          <br/><br/>
+                <div class="input-container">
+                    <label for="email" class="visually-hidden">Email</label>
+              <input type="email" name="email" id="email" placeholder="Email" class="underlined-text" required aria-required="true" />
+                    <small class="error-msg" id="emailError" aria-live="polite"></small>
+                </div>
 
                 <!-- Password with Show/Hide Toggle -->
-                <div class="password-wrapper">
-              <input type="password" name="password" id="password" placeholder="Password (Min 8 chars, Alphanumeric)" class="underlined-text" />
-                    <span id="togglePassword" class="eye-icon">👁️</span>
+                <div class="input-container">
+                    <label for="password" class="visually-hidden">Password</label>
+                    <div class="password-wrapper">
+                  <input type="password" name="password" id="password" placeholder="Password (Min 8 chars, Alphanumeric)" class="underlined-text" required aria-required="true" />
+                        <span id="togglePassword" class="eye-icon" role="button" aria-label="Show password" tabindex="0">👁️</span>
+                    </div>
+                    <small class="error-msg" id="passwordError" aria-live="polite"></small>
                 </div>
-                <small class="error-msg" id="passwordError"></small>
-        <br/><br/>
 
                 <!-- Confirm Password with Show/Hide Toggle -->
-                <div class="password-wrapper">
-            <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" class="underlined-text" />
-                    <span id="toggleConfirmPassword" class="eye-icon">👁️</span>
+                <div class="input-container">
+                    <label for="confirmpassword" class="visually-hidden">Confirm Password</label>
+                    <div class="password-wrapper">
+                <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" class="underlined-text" required aria-required="true" />
+                        <span id="toggleConfirmPassword" class="eye-icon" role="button" aria-label="Show confirm password" tabindex="0">👁️</span>
+                    </div>
+                    <small class="error-msg" id="confirmPasswordError" aria-live="polite"></small>
                 </div>
-                <small class="error-msg" id="confirmPasswordError"></small>
-        <br/><br/>
 
-        <input type="text" name="date" id="date" placeholder="DD/MM/YYYY" class="underlined-text" />
-                <small class="error-msg" id="dateError"></small>
-        <br/><br/>
+                <div class="input-container">
+                    <label for="date" class="visually-hidden">Date of Birth</label>
+            <input type="text" name="date" id="date" placeholder="DD/MM/YYYY" class="underlined-text" required aria-required="true" />
+                    <small class="error-msg" id="dateError" aria-live="polite"></small>
+                </div>
 
-        <div>
+        <div class="radio-group-container">
                     <input type="radio" name="profession" id="student" value="s" /> <label for="student">Student</label>
                     &nbsp;&nbsp;&nbsp;
                     <input type="radio" name="profession" id="employee" value="e" /> <label for="employee">Employee</label>
                 </div>
-                <small class="error-msg" id="professionError"></small>
-        <br/><br/>
+                <small class="error-msg" id="professionError" aria-live="polite"></small>
 
-        <div>
+        <div class="checkbox-container">
                     <input type="checkbox" name="terms" id="terms" value="Terms"> <label for="terms">I agree to all conditions</label>
                 </div>
-                <small class="error-msg" id="termsError"></small>
-        <br/><br/>
+                <small class="error-msg" id="termsError" aria-live="polite"></small>
 
         <button type="submit" name="signup">Signup</button>
-        <br/><br/>
         </fieldset>
       </form>
      </main>
 
      <!-- Success Popup Modal Window -->
-     <div id="successModal" class="modal-overlay">
+     <div id="successModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
          <div class="modal-card">
-             <h2>Success! 🎉</h2>
+             <h2 id="modalTitle">Success! 🎉</h2>
              <p>You have successfully registered with BusinessMagnify.</p>
              <button id="closeModalBtn" type="button">OK</button>
          </div>
      </div>
 
+     <!-- Footer -->
      <footer class="site-footer">
        <div class="footer-container">
-    <h1 style="margin: 5px; color: #1A516F; font-family: 'Lily Script One'; font-weight: lighter;">Business<span style="color: white;">Magnify</span></h1>
+    <h1 class="footer-brand">Business<span>Magnify</span></h1>
         
         <!-- Home Column -->
         <div class="footer-col">
