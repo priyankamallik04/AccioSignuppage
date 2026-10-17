@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BusinessMagnify | Signup page</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marko+One&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&family=Marko+One&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lily+Script+One&family=Madimi+One&family=Marko+One&display=swap" rel="stylesheet">
+</head>
+<body>
+     <header>
+      <h1 class="logo">Business<span>Magnify</span></h1>
+      <nav class="navi-right">
+        <ul class="menu">
+          <li class="item"><a href="#">Home</a></li>
+          <li class="item"><a href="#">About</a></li>
+          <li class="item"><a href="#">Contact</a></li>
+          <li class="item"><a href="#" class="login-btn">Login</a></li>
+        </ul>
+      </nav>
+     </header>
+
+     <main>
+      <form id="signupForm" method="POST" novalidate>
+        <fieldset class="fline">
+                <h1>Signup</h1>
+                <br/>
+          <input type="text" name="name" id="name" placeholder="Full Name" class="underlined-text" />
+                <small class="error-msg" id="nameError"></small>
+          <br/><br/>
+
+          <input type="email" name="email" id="email" placeholder="Email" class="underlined-text" />
+                <small class="error-msg" id="emailError"></small>
+          <br/><br/>
+
+                <!-- Password with Show/Hide Toggle -->
+                <div class="password-wrapper">
+              <input type="password" name="password" id="password" placeholder="Password (Min 8 chars, Alphanumeric)" class="underlined-text" />
+                    <span id="togglePassword" class="eye-icon">👁️</span>
+                </div>
+                <small class="error-msg" id="passwordError"></small>
+        <br/><br/>
+
+                <!-- Confirm Password with Show/Hide Toggle -->
+                <div class="password-wrapper">
+            <input type="password" name="confirmpassword" id="confirmpassword" placeholder="Confirm Password" class="underlined-text" />
+                    <span id="toggleConfirmPassword" class="eye-icon">👁️</span>
+                </div>
+                <small class="error-msg" id="confirmPasswordError"></small>
+        <br/><br/>
+
+        <input type="text" name="date" id="date" placeholder="DD/MM/YYYY" class="underlined-text" />
+                <small class="error-msg" id="dateError"></small>
+        <br/><br/>
+
+        <div>
+                    <input type="radio" name="profession" id="student" value="s" /> <label for="student">Student</label>
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="profession" id="employee" value="e" /> <label for="employee">Employee</label>
+                </div>
+                <small class="error-msg" id="professionError"></small>
+        <br/><br/>
+
+        <div>
+                    <input type="checkbox" name="terms" id="terms" value="Terms"> <label for="terms">I agree to all conditions</label>
+                </div>
+                <small class="error-msg" id="termsError"></small>
+        <br/><br/>
+
+        <button type="submit" name="signup">Signup</button>
+        <br/><br/>
+        </fieldset>
+      </form>
+     </main>
+
+     <!-- Success Popup Modal Window -->
+     <div id="successModal" class="modal-overlay">
+         <div class="modal-card">
+             <h2>Success! 🎉</h2>
+             <p>You have successfully registered with BusinessMagnify.</p>
+             <button id="closeModalBtn" type="button">OK</button>
+         </div>
+     </div>
+
+     <footer class="site-footer">
+       <div class="footer-container">
+    <h1 style="margin: 5px; color: #1A516F; font-family: 'Lily Script One'; font-weight: lighter;">Business<span style="color: white;">Magnify</span></h1>
+        
+        <!-- Home Column -->
+        <div class="footer-col">
+          <h3><a href="#" class="main-footer-link">Home</a></h3>
+          <ul class="footer-links">
+            <li><a href="#">Welcome</a></li>
+            <li><a href="#">Featured</a></li>
+            <li><a href="#">Latest Updates</a></li>
+          </ul>
+        </div>
+
+        <!-- About Column -->
+        <div class="footer-col">
+          <h3><a href="#" class="main-footer-link">About</a></h3>
+          <ul class="footer-links">
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Team</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Column -->
+        <div class="footer-col">
+          <h3><a href="#" class="main-footer-link">Contact</a></h3>
+          <ul class="footer-links">
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Email Us</a></li>
+            <li><a href="#">Location</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
